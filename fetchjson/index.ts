@@ -4,5 +4,13 @@ const url = 'http://jsonplaceholder.typicode.com/todos/1'
 
 // This operation is async. It returns a promise
 axios.get(url).then(response => {
-    console.log(response.data)
+    const todo = response.data;
+    
+    const id = todo.id;
+    const title = todo.title;
+    const isCompleted = todo.completed?'Done':'In Progress';
+
+    console.log(`
+        TODO ${id} - ${title} is ${isCompleted}
+        `);
 });
