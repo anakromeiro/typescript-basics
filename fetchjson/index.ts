@@ -2,11 +2,11 @@ import axios from "axios";
 
 const url = "http://jsonplaceholder.typicode.com/todos/1";
 
-// Interface describe the structure of an object
+// An Interface describe the structure of an object
 interface TODO {
   id: number;
   title: string;
-  completed: boolean;
+  status: boolean;
 }
 
 // This operation is async. It returns a promise
@@ -15,9 +15,13 @@ axios.get(url).then((response) => {
 
   const id = todo.id;
   const title = todo.title;
-  const isCompleted = todo.completed ? "Done" : "In Progress";
+  const status = todo.status;
 
-  console.log(`
-        Task ${id} - ${title} is ${isCompleted}
-        `);
+  logTODO(id, title, status);
 });
+
+const logTODO = (id: number, title: string, status: boolean) => {
+  console.log(`
+        Task ${id} - ${title} is ${status ? "Done" : "In Progress"}
+        `);
+};
